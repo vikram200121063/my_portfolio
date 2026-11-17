@@ -288,39 +288,382 @@ h1 em {
   font-style: normal;
 }
 
-  </style>
+/* Career detail layouts use the same spacing and colors as the homepage. */
+.role-heading { display: flex; justify-content: space-between; gap: 28px; align-items: start; }
+.role-heading h3 { font-size: 30px; }
+.role-heading > p, .project-date, .stack { color: var(--muted); font-size: 13px; }
+.role-summary { max-width: 850px; margin-top: 24px; }
+.responsibilities { padding-left: 22px; max-width: 900px; }
+.responsibilities li { margin: 12px 0; }
+.subsection-title { margin: 45px 0 20px; }
+.internship { border-top: 1px solid var(--line); padding-top: 32px; margin-top: 25px; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 60px; }
+.skills-grid h4 { margin-top: 0; }
+#education, #skills, #achievements { border-top: 1px solid var(--line); }
+h2 { font-size: clamp(30px, 4vw, 46px); }
+.project h3 { font-size: clamp(26px, 3.3vw, 38px); }
+@media(max-width: 850px) {
+  header { flex-wrap: wrap; gap: 20px; }
+  nav { flex-wrap: wrap; gap: 16px; }
+  .role-heading { flex-direction: column; gap: 5px; }
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* Layered surfaces give the portfolio depth while keeping text readable. */
+:root {
+  --paper: #f4f6f0;
+  --ink: #173b30;
+  --muted: #576c62;
+  --line: #d4dfd5;
+  --accent: #e1edc6;
+}
+body {
+  background: radial-gradient(ellipse at 95% 0%, #dce9ca 0, transparent 35%), var(--paper);
+}
+header {
+  position: relative;
+  z-index: 5;
+  padding-block: 24px;
+}
+nav a {
+  padding: 7px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+nav a:hover, nav a[aria-current="location"] {
+  color: #426827;
+  border-bottom-color: #789648;
+  text-decoration: none;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  margin-top: 28px;
+  padding: 64px 44px 0;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  background: linear-gradient(125deg, #ffffffee, #edf4e5dd);
+  box-shadow: 0 24px 60px -38px #214b3c66, inset 0 1px 0 white;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 170px;
+  height: 170px;
+  right: 35px;
+  top: 40px;
+  border-radius: 42px;
+  background: linear-gradient(140deg, #c6dca3, #f7faef 55%, #a9c284);
+  box-shadow: 18px 24px 35px #56744525, inset 2px 2px 3px #ffffff;
+  transform: perspective(700px) rotateX(22deg) rotateY(-28deg) rotateZ(18deg);
+  opacity: .45;
+}
+h1 {
+  position: relative;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.16;
+  max-width: 940px;
+}
+h1 em { color: #597c35; }
+.hero .intro { gap: 30px; }
+.button {
+  border-radius: 12px;
+  background: linear-gradient(140deg, #295744, #173b30);
+  box-shadow: 0 6px 0 #102c23, 0 16px 26px #214b3c22;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #102c23, 0 20px 28px #214b3c28;
+  text-decoration: none;
+}
+.button:active { transform: translateY(3px); box-shadow: 0 2px 0 #102c23; }
+.hero-bottom { margin-top: 42px; }
+section { padding-block: 64px; }
+.section-title h2 { letter-spacing: -1px; }
+.role-heading {
+  padding: 28px;
+  background: #e7eddf;
+  border-left: 4px solid #769649;
+  border-radius: 4px 18px 18px 4px;
+}
+.role-summary, .responsibilities { margin-left: 12px; }
+.project {
+  position: relative;
+  gap: 42px;
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid #dce5d8;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ffffff, #f9fbf5);
+  box-shadow: 0 5px 0 #e1e8dc, 0 20px 35px -28px #183c3066;
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.project:hover {
+  box-shadow: 0 5px 0 #d8e3cf, 0 26px 42px -25px #183c3055;
+}
+.project-heading {
+  padding-right: 24px;
+  border-right: 1px solid var(--line);
+}
+.project .eyebrow { color: #64843f; }
+.project h3 { font-size: clamp(26px, 3vw, 35px); }
+.project summary {
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid #dce5d5;
+  background: #eef3e8;
+}
+.project summary:hover { background: #e4edda; }
+.stack { line-height: 1.9; font-size: 12px; color: #51713d; }
+.social a {
+  border-bottom: 1px solid #8ba277;
+  padding-bottom: 3px;
+}
+.skills-grid > div {
+  padding: 26px;
+  border: 1px solid #dce5d8;
+  border-radius: 18px;
+  background: #ffffffb3;
+  box-shadow: 0 12px 24px -24px #1e4335;
+}
+#education .experience-grid {
+  padding: 30px;
+  border-radius: 20px;
+  background: #e8eedf;
+}
+#education h3 { font-size: 28px; line-height: 1.3; }
+.contact {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(130deg, #1c4436, #30553b);
+  color: #f6faed;
+  box-shadow: 0 18px 40px -24px #163c3277;
+}
+.contact .eyebrow { color: #c7dfa6; }
+.contact h2 { font-size: clamp(36px, 5vw, 60px); }
+.contact .social a { border-color: #a9c889; }
+@media(max-width: 850px) {
+  .hero { padding: 40px 26px 0; }
+  .hero .intro { display: block; }
+  .hero .button { display: inline-block; margin-top: 14px; }
+  .project { gap: 24px; padding: 26px; }
+}
+@media(max-width: 700px) {
+  .hero { margin-top: 10px; padding: 30px 20px 0; border-radius: 20px; }
+  .hero::before { width: 90px; height: 90px; right: 15px; top: 35px; opacity: .25; }
+  h1 { font-size: clamp(32px, 8.5vw, 45px); }
+  h1 br { display: none; }
+  .hero-bottom { flex-direction: column; gap: 6px; }
+  .project { padding: 22px; }
+  .project-heading { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 14px; }
+  .role-heading { padding: 22px; }
+  .section-title h2 { letter-spacing: -.5px; }
+  .contact .email { overflow-wrap: anywhere; }
+}
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  .project, .button:hover { transform: none; }
+}
+
+/* Scroll feedback stays outside the document layout. */
+.reading-progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #244e3c, #a4c96d);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 20;
+  pointer-events: none;
+}
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #acc197;
+  border-radius: 50%;
+  background: #173b30;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px #173b3033;
+}
+.back-to-top[hidden] { display: none; }
+.back-to-top:hover { background: #365e41; }
+.back-to-top:focus-visible { outline: 3px solid #769649; outline-offset: 4px; }
+@media(prefers-reduced-motion: no-preference) {
+  .reveal-pending {
+    opacity: 0;
+    translate: 0 18px;
+    transition: opacity 550ms ease, translate 550ms ease;
+  }
+  .reveal-pending.is-visible { opacity: 1; translate: 0 0; }
+}
+@media print {
+  .reading-progress, .back-to-top { display: none !important; }
+  .reveal-pending { opacity: 1; translate: none; }
+}
+
+/* Decorative light stays behind the content and never captures clicks. */
+.hero { overflow: hidden; }
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle 220px at var(--light-x, 65%) var(--light-y, 30%), #d2e8a966, transparent 75%);
+}
+.hero::before {
+  animation: hero-float 12s ease-in-out infinite;
+}
+@keyframes hero-float {
+  0%, 100% { transform: perspective(700px) translateY(0) rotateX(22deg) rotateY(-28deg) rotateZ(18deg); }
+  50% { transform: perspective(700px) translateY(18px) rotateX(28deg) rotateY(-18deg) rotateZ(25deg); }
+}
+.skills-grid > div {
+  transition: translate 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+@media(hover: hover) and (pointer: fine) {
+  .skills-grid > div:hover {
+    translate: 0 -5px;
+    border-color: #9fba82;
+    box-shadow: 0 18px 30px -24px #254c3c88;
+  }
+}
+.contact {
+  overflow: hidden;
+  isolation: isolate;
+}
+.contact::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 280px;
+  height: 280px;
+  right: -90px;
+  bottom: -120px;
+  border: 1px solid #b8d59544;
+  border-radius: 50%;
+  box-shadow: 0 0 0 38px #b8d5950a, 0 0 0 76px #b8d59508, 0 0 0 114px #b8d59505;
+  pointer-events: none;
+}
+::selection { background: #cfdfa9; color: #173b30; }
+@media(prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+  .skills-grid > div:hover { translate: none; }
+}
+@media print {
+  .hero::before, .hero::after, .contact::after { display: none; }
+}
+
+/* The original portrait uses its natural aspect ratio to keep the face uncropped. */
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 30%);
+  align-items: center;
+  gap: 36px;
+}
+.hero-copy { min-width: 0; }
+.hero-copy h1 { font-size: clamp(36px, 4.1vw, 52px); }
+.hero-copy h1 br { display: none; }
+.hero-copy .intro { display: block; }
+.hero-copy .button { display: inline-block; margin-top: 16px; }
+.hero-portrait {
+  position: relative;
+  padding: 9px;
+  border: 1px solid #ffffff;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #ffffff, #d3dfc6);
+  box-shadow: 0 9px 0 #cedac0, 0 28px 45px -20px #193e3455;
+  transform: rotate(2deg);
+}
+.hero-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+@media(max-width: 850px) {
+  .hero-layout { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; }
+  .hero-copy h1 { font-size: 36px; }
+}
+@media(max-width: 700px) {
+  .hero-layout { grid-template-columns: 1fr; gap: 30px; }
+  .hero-portrait { width: min(75%, 280px); margin: 0 auto 10px; transform: none; }
+  .hero-copy h1 { font-size: clamp(32px, 8.5vw, 45px); }
+}
+
+/* Primary actions stay together and wrap naturally on smaller screens. */
+.hero-copy .intro p { max-width: 100%; font-size: 15px; line-height: 1.8; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; padding-bottom: 6px; }
+.hero-copy .hero-actions .button { margin-top: 0; font-size: 14px; }
+.hero-actions .resume-button {
+  color: var(--ink);
+  background: #f7faef;
+  border: 1px solid #9db585;
+  box-shadow: 0 5px 0 #cfddc0, 0 12px 22px #214b3c12;
+}
+.hero-actions .resume-button:hover { box-shadow: 0 8px 0 #cfddc0, 0 16px 24px #214b3c20; }
+.hero-actions .button span { margin-left: 14px; }
+@media(max-width: 450px) {
+  .hero-actions .button { width: 100%; text-align: center; }
+}
+
+</style>
 </head>
 <body>
+<div class="reading-progress" aria-hidden="true"></div>
+<button class="back-to-top" type="button" aria-label="Back to top" hidden>&uarr;</button>
   <header>
 <a class="name" href="#home">Vikram Singh<span>Product Owner</span>
 </a>
 <nav aria-label="Main navigation">
-<a href="#work">Work</a>
+<a href="#work">Projects</a>
 <a href="#experience">Experience</a>
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
   <main>
     <section class="hero" id="home">
+<div class="hero-layout">
+<div class="hero-copy">
 <p class="eyebrow">AI · FINANCIAL DATA · ORACLE FUSION</p>
 <h1>From complex workflows<br>to products that <em>work.</em>
 </h1>
 <div class="intro">
-<p>I’m Vikram, a Product Owner with hands-on Oracle Fusion experience. I turn finance and HR requirements into AI workflows, data products, and software people can use.</p>
-<a class="button" href="#work">Explore my work <span aria-hidden="true">↗</span>
-</a>
+<p>I'm Vikram Singh, a Product Owner and IIT Guwahati graduate with 2+ years of experience in AI and finance products. I turn business needs into requirements, user stories, and reliable releases. My work spans Oracle AI Agents, Finance One integrations, and Oracle Fusion Financials. I also build applications with Python and SQL, including SnapClass and Milk Dairy Management.</p>
+<div class="hero-actions">
+  <a class="button" href="#experience">Explore my work <span aria-hidden="true">&nearr;</span></a>
+  <a class="button resume-button" href="Vikram_Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume <span aria-hidden="true">&darr;</span></a>
+</div>
+</div>
+</div>
+<div class="hero-portrait">
+  <img src="Vikram_Image_gate.png" alt="Portrait of Vikram Singh wearing a navy suit" width="450" height="487" fetchpriority="high" decoding="async">
+</div>
 </div>
 <div class="hero-bottom">
 <span>Based in Ahmedabad, India</span>
 <span>IIT Guwahati · Engineering Physics</span>
 </div>
 </section>
-    <section id="work">
-<div class="section-title">
-<h2>Selected work</h2>
-<p>Product decisions, implementation, and delivery.</p>
-</div>
-      <article class="project">
+<section id="experience">
+<div class="section-title"><h2>Professional experience</h2><p>Product ownership and Oracle Fusion consulting.</p></div>
+<div class="role-heading"><div><p class="eyebrow">PAYROLLCLOUD CORP | AHMEDABAD</p><h3>Product Owner</h3><p>AI Agents, Finance One &amp; Data Reporting</p></div><p>October 2024 - September 2026</p></div>
+<p class="role-summary">I defined requirements, wrote user stories and acceptance criteria, prioritized deliverables, and coordinated development and QA. My work combined product delivery with hands-on Oracle Fusion implementation.</p>
+<ul class="responsibilities"><li>Managed a 300+ item JIRA backlog, supported sprint planning, and owned QA strategy and release criteria for Finance One.</li><li>Worked with stakeholders to translate finance processes into functional requirements, test cases, and delivery priorities.</li><li>Defined requirements for Azure Entra ID single sign-on and role-based access, and documented Expense-to-Payroll workflows with Figma diagrams.</li></ul>
+<h4 class="subsection-title">Projects delivered at PayrollCloud</h4>
+<article class="project">
 <div class="project-heading">
 <p class="eyebrow">ENTERPRISE DATA · PRODUCT OWNERSHIP</p>
 <h3>Finance One</h3>
@@ -338,11 +681,10 @@ h1 em {
 <h4>A product decision in practice</h4>
 <p>Configured mappings can fill missing values using a default or another field. A blank amount can produce a warning, while a non-numeric amount produces an error. Oracle then performs its own import checks.</p>
 <h4>Project results</h4>
-<p>My résumé reports datasets of 100K+ records, about 70% fewer load errors, and 95%+ first-pass load success. These describe the overall project.</p>
+<p>Project outcomes included datasets of 100K+ records, about 70% fewer load errors, and 95%+ first-pass load success. These outcomes reflect the overall project, as reported in my resume.</p>
 </details>
 </div>
-</article>
-      <article class="project">
+</article><article class="project">
 <div class="project-heading">
 <p class="eyebrow">AI WORKFLOWS · ORACLE HCM</p>
 <h3>Oracle AI Agents</h3>
@@ -362,15 +704,22 @@ h1 em {
 </details>
 </div>
 </article>
-      <article class="project">
+<article class="project"><div class="project-heading"><p class="eyebrow">IMPLEMENTATION &amp; ANALYTICS</p><h3>Oracle Fusion Financials</h3><p>Finance processes, migration, reporting, and integrations.</p></div><div><p>My functional consulting work covered Accounts Receivable, Collections, General Ledger, Cash Management, Accounts Payable, Procurement, Fixed Assets, and Expenses.</p>
+<details>
+<summary>Explore the case study <span aria-hidden="true">+</span></summary>
+<h4>Implementation delivery</h4><p>Discovery workshops, Conference Room Pilot sessions, migration using FBDI, ADFdi and HDL, and user acceptance testing across three environments. I reviewed reconciliation results before cutover.</p><h4>Reporting</h4><p>Delivered 20+ BI Publisher, OTBI and Financial Reporting Studio reports using SQL data models across finance modules. My resume reports approximately 60% less manual reporting effort.</p><h4>Integrations</h4><p>Worked with Oracle interfaces, REST/SOAP APIs and MuleSoft, alongside requirements for the Expense module and Expense-to-Payroll integration.</p>
+</details>
+</div></article>
+<div class="role-heading internship"><div><p class="eyebrow">PAYROLLCLOUD CORP | AHMEDABAD</p><h3>Research Analyst Intern</h3><p>Finance Team</p></div><p>June 2024 - September 2024</p></div><p>Researched finance processes and Oracle Fusion Financials data across AP, AR, GL and Cash Management. Documented findings and requirements before progressing to the Product Owner role.</p>
+</section><section id="work"><div class="section-title"><h2>Personal projects</h2><p>Products I built from concept to implementation.</p></div><article class="project">
 <div class="project-heading">
 <p class="eyebrow">FULL-STACK PRODUCT · PYTHON</p>
-<h3>Milk Dairy Management</h3>
+<h3>Milk Dairy Management</h3><p class="project-date">August - September 2026</p>
 <p>Connecting collections, invoices, and payments.</p>
 </div>
 <div>
 <p>I built a Flask and MongoDB application for dairy operations, with workflows for owners, staff, customers, buyers, and guests.</p>
-<details>
+<p class="stack">Python / Flask / MongoDB / Razorpay / Pytest / Bootstrap 5</p><details>
 <summary>Explore the case study <span aria-hidden="true">+</span>
 </summary>
 <h4>Daily operations</h4>
@@ -389,41 +738,140 @@ h1 em {
 </div>
 </div>
 </article>
-    </section>
-    <section id="experience">
-<div class="section-title">
-<h2>Experience</h2>
-<p>Finance expertise meets product delivery.</p>
-</div>
-<div class="experience-grid">
-<div>
-<p class="eyebrow">PAYROLLCLOUD · OCT 2024 – SEP 2026</p>
-<h3>Product Owner</h3>
-<p>AI Agents, Finance One & Data Reporting</p>
-<p>Previously Research Analyst Intern<br>Jun 2024 – Sep 2024</p>
-</div>
-<div>
-<h4>Oracle Fusion implementation</h4>
-<p>Accounts Receivable, Collections, General Ledger, Cash Management, Accounts Payable, Procurement, and Fixed Assets.</p>
-<h4>Reporting & integrations</h4>
-<p>BI Publisher, OTBI, SQL data models, and Expense-to-Payroll integration. My résumé records 20+ finance reports delivered.</p>
-<h4>Delivery</h4>
-<p>Requirements workshops, backlog prioritization, acceptance criteria, data migration, user acceptance testing, and reconciliation.</p>
-</div>
-</div>
-</section>
-    <section class="contact" id="contact">
+<article class="project"><div class="project-heading"><p class="eyebrow">MACHINE LEARNING &amp; FULL-STACK DEVELOPMENT</p><h3>SnapClass</h3><p class="project-date">September - October 2026</p><p>AI attendance with face and voice recognition.</p></div><div><p>I built a dual-biometric attendance platform with separate role-based workflows, QR-code self-enrollment, and a teacher review interface for AI predictions.</p><p class="stack">Python / Streamlit / Supabase / dlib / scikit-learn / Resemblyzer / librosa</p><details><summary>Explore the case study <span aria-hidden="true">+</span></summary><h4>Recognition pipeline</h4><p>Facial recognition uses dlib's 128-dimensional embeddings and a support vector machine classifier. Voice recognition uses Resemblyzer embeddings.</p><h4>Human review</h4><p>A confidence-review interface lets teachers verify predictions before using them in attendance workflows.</p><h4>Enrollment and maintenance</h4><p>QR-code self-enrollment supports onboarding, while an on-demand retrainable classifier accommodates updated enrollment data. The application uses Supabase PostgreSQL and bcrypt authentication.</p></details><div class="social"><a href="https://github.com/vikram200121063/AI-Attendance-Project" target="_blank" rel="noopener noreferrer">View source on GitHub &nearr;</a></div></div></article></section><section id="education"><div class="section-title"><h2>Education</h2></div><div class="experience-grid"><div><p class="eyebrow">NOVEMBER 2020 - MAY 2024</p><h3>Indian Institute of Technology, Guwahati</h3></div><div><h4>B.Tech in Engineering Physics</h4><p>Coursework included Big Data Analytics, Computational Physics, Mathematical Physics, Linear Algebra, Simulation Techniques, and Introduction to Computing.</p></div></div></section>
+<section id="skills"><div class="section-title"><h2>Skills &amp; tools</h2><p>Across product, finance, AI, and implementation.</p></div><div class="skills-grid">
+<div><h4>Product management</h4><p>Product strategy, roadmaps, PRDs, user stories, backlog prioritization, KPI/OKR tracking, stakeholder management, UAT, Agile/Scrum, JIRA, Figma.</p></div>
+<div><h4>AI &amp; machine learning</h4><p>Oracle AI Agent Studio, LLMs, agentic workflows, RAG, prompt engineering, vector search, embeddings, scikit-learn.</p></div>
+<div><h4>Data &amp; analytics</h4><p>SQL, Python, Pandas, NumPy, Matplotlib, Power BI, Excel, BI Publisher, OTBI, FRS, data quality and reconciliation.</p></div>
+<div><h4>Engineering &amp; integrations</h4><p>Flask, Streamlit, JavaScript, HTML, CSS, PostgreSQL, MongoDB, Supabase, REST/SOAP APIs, MuleSoft, Postman, Azure Entra ID.</p></div></div></section>
+<section id="achievements"><div class="section-title"><h2>Certifications &amp; awards</h2></div><div class="skills-grid"><div><p class="eyebrow">ORACLE UNIVERSITY | 2025</p><h4>Oracle certifications</h4><p>Oracle Fusion AI Agent Studio and Oracle Cloud Infrastructure (OCI), as listed in my resume.</p></div><div><p class="eyebrow">PAYROLLCLOUD | 2026</p><h4>Top Performance Award</h4><p>Recognized in January and March 2026.</p></div></div></section>    <section class="contact" id="contact">
 <p class="eyebrow">LET’S CONNECT</p>
 <h2>Have a product<br>challenge in mind?</h2>
 <a class="email" href="mailto:laavikram11@gmail.com">laavikram11@gmail.com ↗</a>
 <div class="social">
-<a href="https://www.linkedin.com/in/vikram-singh-427a3a222/">LinkedIn ↗</a>
-<a href="https://github.com/vikram200121063">GitHub ↗</a>
-<a href="Vikram_Resume.pdf">Resume</a>
+<a href="https://www.linkedin.com/in/vikram-singh-427a3a222/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+<a href="https://github.com/vikram200121063" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div>
 </section>
   </main>
 <footer>Vikram Singh <span>Product Owner · AI & Data</span>
 </footer>
+<script>
+// Tilt only on precise pointing devices. Touch and reduced-motion users get static cards.
+const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)');
+document.querySelectorAll('.project').forEach((card) => {
+  function resetTilt() {
+    card.style.removeProperty('--tilt-x');
+    card.style.removeProperty('--tilt-y');
+  }
+  card.addEventListener('pointermove', (event) => {
+    if (!motionAllowed.matches || card.querySelector('details[open]')) {
+      resetTilt();
+      return;
+    }
+    const bounds = card.getBoundingClientRect();
+    const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
+    card.style.setProperty('--tilt-x', `${-vertical * 3}deg`);
+    card.style.setProperty('--tilt-y', `${horizontal * 3}deg`);
+  });
+  card.addEventListener('pointerleave', resetTilt);
+  card.addEventListener('focusin', resetTilt);
+  card.querySelectorAll('details').forEach((details) => details.addEventListener('toggle', resetTilt));
+  motionAllowed.addEventListener('change', resetTilt);
+});
+</script>
+
+<script>
+// Reveal content once as it enters view. Content remains visible without JavaScript.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealTargets = document.querySelectorAll('.section-title, .project, .role-heading, .skills-grid > div');
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  revealTargets.forEach((target) => {
+    target.classList.add('reveal-pending');
+    revealObserver.observe(target);
+    target.addEventListener('focusin', () => target.classList.add('is-visible'));
+  });
+  reduceMotion.addEventListener('change', () => {
+    if (reduceMotion.matches) {
+      revealObserver.disconnect();
+      revealTargets.forEach((target) => target.classList.add('is-visible'));
+    }
+  });
+}
+
+// Schedule a single screen update per frame, even when many scroll events arrive.
+const progressBar = document.querySelector('.reading-progress');
+const topButton = document.querySelector('.back-to-top');
+const navigationLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+const pageSections = [...document.querySelectorAll('main section[id]')];
+let scrollFramePending = false;
+function updateScrollFeedback() {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+  progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+  topButton.hidden = window.scrollY < 450;
+  let activeSection = '';
+  pageSections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= 180) activeSection = section.id;
+  });
+  navigationLinks.forEach((link) => {
+    if (link.hash === `#${activeSection}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  scrollFramePending = false;
+}
+function scheduleScrollFeedback() {
+  if (!scrollFramePending) {
+    scrollFramePending = true;
+    window.requestAnimationFrame(updateScrollFeedback);
+  }
+}
+window.addEventListener('scroll', scheduleScrollFeedback, { passive: true });
+window.addEventListener('resize', scheduleScrollFeedback);
+document.querySelectorAll('details').forEach((details) => details.addEventListener('toggle', scheduleScrollFeedback));
+window.addEventListener('load', scheduleScrollFeedback);
+topButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
+  document.querySelector('header .name').focus({ preventScroll: true });
+});
+updateScrollFeedback();
+</script>
+<script>
+// Move the hero light with a mouse; keep it static on touch devices.
+const heroPanel = document.querySelector('.hero');
+const heroLightAllowed = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+let lightFrame = 0;
+let lightX = 0;
+let lightY = 0;
+heroPanel.addEventListener('pointermove', (event) => {
+  if (!heroLightAllowed.matches) return;
+  const bounds = heroPanel.getBoundingClientRect();
+  lightX = event.clientX - bounds.left;
+  lightY = event.clientY - bounds.top;
+  if (lightFrame) return;
+  lightFrame = window.requestAnimationFrame(() => {
+    heroPanel.style.setProperty('--light-x', `${lightX}px`);
+    heroPanel.style.setProperty('--light-y', `${lightY}px`);
+    lightFrame = 0;
+  });
+});
+function resetHeroLight() {
+  window.cancelAnimationFrame(lightFrame);
+  lightFrame = 0;
+  heroPanel.style.removeProperty('--light-x');
+  heroPanel.style.removeProperty('--light-y');
+}
+heroPanel.addEventListener('pointerleave', resetHeroLight);
+heroLightAllowed.addEventListener('change', resetHeroLight);
+</script>
 </body>
 </html>
